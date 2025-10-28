@@ -45,19 +45,5 @@ logger.error("오류가 발생했습니다", metadata: ["code": 500])
 
 `Logger`는 `info`, `debug`, `error` 등의 메서드를 통해 다양한 로그 레벨을 지원하며, 필요에 따라 메타데이터를 함께 기록할 수 있습니다.
 
-## 커스터마이징
-기본 제공되는 핸들러 대신 커스텀 로그 핸들러를 구현하여 사용할 수 있습니다. `LogHandler` 프로토콜을 준수하는 타입을 구현한 뒤 `Logger` 초기화 시 주입하면 됩니다.
-
-```swift
-struct MyConsoleHandler: LogHandler {
-    func log(level: LogLevel, message: String, metadata: [String : Any]?) {
-        print("[\(level.rawValue.uppercased())]", message, metadata ?? [:])
-    }
-}
-
-let customLogger = Logger(handler: MyConsoleHandler())
-customLogger.info("커스텀 핸들러로 로그를 출력합니다.")
-```
-
 ## 라이선스
 이 프로젝트는 MIT 라이선스를 따릅니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참고하세요.
